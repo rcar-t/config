@@ -1,0 +1,68 @@
+format = """\
+[╭╴](white bold)\
+[  ](fg:#ffffff)$directory$git_branch$git_commit$git_state$git_metrics$git_status$fill $kubernetes$container$time
+[╰─](white bold)$character\
+"""
+
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10
+
+# Disable the blank line at the start of the prompt
+add_newline = false
+
+# Set "foo" as custom color palette
+palette = "foo"
+
+# Define custom colors
+[palettes.foo]
+# Overwrite existing color
+blue = "21"
+# Define new color
+mustard = "#af8700"
+
+[battery]
+disabled=false
+
+[[battery.display]] # 'bold red' style and discharging_symbol when capacity is between 0% and 10%
+threshold = 10
+style = 'bold red'
+
+[[battery.display]] # 'bold yellow' style and 💦 symbol when capacity is between 10% and 30%
+threshold = 30
+style = 'bold yellow'
+discharging_symbol = '💦'
+
+[time]
+disabled = false
+format = '[\[  $time \]]($style) '
+time_format = "%T"
+utc_time_offset = "+8"
+
+[directory]
+truncation_length = 8
+truncate_to_repo = false
+
+[git_branch]
+symbol = " "
+truncation_symbol = ""
+
+[username]
+style_user = "white bold"
+style_root = "black bold"
+disabled = false
+show_always = true
+
+[character]
+success_symbol = "[](white)"
+error_symbol = "[](white)"
+
+[kubernetes]
+disabled = false
+format = '[$symbol$context( \($namespace\))]($style) '
+style = "fg:#d297f9"
+
+[container]
+format = '[$symbol \[$name\]]($style) '
+
+[fill]
+symbol="─"
